@@ -1,4 +1,4 @@
-package com.spacetim.ms.product.vo;
+package com.spacetim.ms.common.vo;
 
 public class SuccessOrFailureMessage {
 

@@ -1,6 +1,17 @@
+server:
+  port: 5001
+
 spring:
   application:
     name: ms-product
+
+  # 数据库配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  #当前数据源操作类型
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_cloud2021_product?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+    username: root
+    password: 123456
 
 eureka:
   client:
@@ -9,11 +20,11 @@ eureka:
 
 secret:
   key: ms-secret-key
+
 mybatis:
   mapper-locations: classpath:/mybatis/*.xml
-  type-aliases-package: com.spring.cloud.ms.common.pojo
-server:
-  port: 5001
+  type-aliases-package: com.spacetim.ms.product.pojo
+
 
 # Actuator端点暴露
 management:
@@ -22,4 +33,6 @@ management:
       exposure:
         # 配置Actuator暴露那些端点  ②
         include: '*'
-
+database:
+  center:
+    id: 1001

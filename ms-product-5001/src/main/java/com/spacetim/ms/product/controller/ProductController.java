@@ -1,8 +1,8 @@
 package com.spacetim.ms.product.controller;
 
+import com.spacetim.ms.common.vo.SuccessOrFailureMessage;
 import com.spacetim.ms.product.pojo.ProductPojo;
 import com.spacetim.ms.product.service.ProductService;
-import com.spacetim.ms.product.vo.SuccessOrFailureMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -1,4 +1,4 @@
-package com.spacetim.ms.product.key;
+package com.spacetim.ms.common.key;
 
 public class SnowFlakeWorker {
     // 开始时间（这里使用2019年04月01日整点）

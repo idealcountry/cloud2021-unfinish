@@ -1,16 +1,16 @@
 package com.spacetim.ms.product.service.impl;
 
+import com.spacetim.ms.common.key.SnowFlakeWorker;
 import com.spacetim.ms.product.dao.ProductDao;
 import com.spacetim.ms.product.dao.ProductSalesDetailsDao;
-import com.spacetim.ms.product.key.SnowFlakeWorker;
 import com.spacetim.ms.product.pojo.ProductPojo;
 import com.spacetim.ms.product.pojo.ProductSalesDetailsPojo;
 import com.spacetim.ms.product.service.ProductService;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -106,8 +106,7 @@ public class ProductServiceImpl implements ProductService {
         details.setProductId(id);
         details.setQuantity(quantity);
         // 获取当前用户认证信息
-        Authentication authentication
-                = SecurityContextHolder.getContext().getAuthentication();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         // 获取用户名
         String userName = authentication.getName();
         details.setUserName(userName);

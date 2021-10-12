@@ -1,16 +1,21 @@
 package com.spacetim.ms.product.security;
 
 
+import com.spacetim.ms.common.token.TokenSecurityFilter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${secret.key}")
     private String secretKey = null; // 阴匙
+    private PasswordEncoder encoder = new BCryptPasswordEncoder();
     /**
      * 请求路径权限限制
      * @param http HTTP请求配置
@@ -34,5 +39,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             // 在责任链上添加过滤器
             .addFilterBefore(tokenFilter,
                     UsernamePasswordAuthenticationFilter.class);
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+                .passwordEncoder(encoder)
+                .withUser("admin").password(encoder.encode("123456"))
+                .roles("ADMIN","USER");
     }
 }

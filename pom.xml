@@ -12,6 +12,7 @@
         <module>ms-eureka-1002</module>
         <module>ms-product-5001</module>
         <module>ms-common</module>
+        <module>ms-zuul-2001</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -1,7 +1,7 @@
 package com.spacetim.ms.common.token;
 
 import com.alibaba.fastjson.JSON;
-import com.spring.cloud.ms.common.key.DesCoderUtils;
+import com.spacetim.ms.common.key.DesCoderUtils;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

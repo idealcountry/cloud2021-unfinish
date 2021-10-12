@@ -1,6 +1,7 @@
-package com.spacetim.ms.product.key;
+package com.spacetim.ms.common.key;
 
 import org.apache.tomcat.util.codec.binary.Base64;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.DigestUtils;
 
 import javax.crypto.Cipher;
@@ -76,5 +77,14 @@ public class DesCoderUtils {
         SnowFlakeWorker worker = new SnowFlakeWorker(1002L);
         Long id = worker.nextId();
         System.out.println(id);
+        String user123 = DesCoderUtils.encode3Des("ms-secret-key", "admin123");
+        System.out.println(user123);
+
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        String encode = bCryptPasswordEncoder.encode("user123");
+        System.out.println(encode);
+        System.out.println(bCryptPasswordEncoder.matches("admin123", encode));
+        boolean admin123 = bCryptPasswordEncoder.matches("admin123", "$2a$10$4TEP0tnwqiDMVfkuRydGSOA94xGmJtTpAFZ1di/9XWhrp3GturQ6i");
+        System.out.println(admin123);
     }
 }
