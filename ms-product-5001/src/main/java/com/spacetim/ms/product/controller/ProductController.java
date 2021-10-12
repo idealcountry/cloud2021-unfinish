@@ -1,6 +1,5 @@
 package com.spacetim.ms.product.controller;
 
-import com.spacetim.ms.common.vo.SuccessOrFailureMessage;
 import com.spacetim.ms.product.pojo.ProductPojo;
 import com.spacetim.ms.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,26 +29,26 @@ public class ProductController {
         return productService.getLatestProduct(id);
     }
 
-    /**
-     *  因服务调用存在重试机制，这里需要注意幂等性的问题
-     * @param xid —— 业务序列号
-     * @param id ——产品编号
-     * @param quantity —— 购买数量
-     * @return 是否成功
-     */
-    @GetMapping("/product/stock/{xid}/{id}/{quantity}")
-    public SuccessOrFailureMessage reduceStock(@PathVariable("xid") Long xid,
-                                               @PathVariable("id") Long id, @PathVariable("quantity") Integer quantity) {
-//        DataSourcesContentHolder.setId(id);
-        Integer result = productService.reduceStock(xid, quantity,id);
-        if (result ==-1) {
-            return new SuccessOrFailureMessage(false, "库存不足");
-        } else if (result == 0){
-            return new SuccessOrFailureMessage(false, "重复扣减");
-        } else {
-            return new SuccessOrFailureMessage(true, "扣减库存成功");
-        }
-    }
+//    /**
+//     *  因服务调用存在重试机制，这里需要注意幂等性的问题
+//     * @param xid —— 业务序列号
+//     * @param id ——产品编号
+//     * @param quantity —— 购买数量
+//     * @return 是否成功
+//     */
+//    @GetMapping("/product/stock/{xid}/{id}/{quantity}")
+//    public SuccessOrFailureMessage reduceStock(@PathVariable("xid") Long xid,
+//                                               @PathVariable("id") Long id, @PathVariable("quantity") Integer quantity) {
+////        DataSourcesContentHolder.setId(id);
+//        Integer result = productService.reduceStock(xid, quantity,id);
+//        if (result ==-1) {
+//            return new SuccessOrFailureMessage(false, "库存不足");
+//        } else if (result == 0){
+//            return new SuccessOrFailureMessage(false, "重复扣减");
+//        } else {
+//            return new SuccessOrFailureMessage(true, "扣减库存成功");
+//        }
+//    }
 
 
 

@@ -9,7 +9,7 @@ public interface ProductService {
 
     public ProductPojo getLatestProduct(Long id);
 
-    public Integer reduceStock(Long xid, Integer quantity, Long id);
+//    public Integer reduceStock(Long xid, Integer quantity, Long id);
 
 
 }
