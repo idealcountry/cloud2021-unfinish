@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: ms-product
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1001/eureka,http://localhost:1002/eureka
+
+secret:
+  key: ms-secret-key
+mybatis:
+  mapper-locations: classpath:/mybatis/*.xml
+  type-aliases-package: com.spring.cloud.ms.common.pojo
+server:
+  port: 5001
+
+# Actuator端点暴露
+management:
+  endpoints:
+    web:
+      exposure:
+        # 配置Actuator暴露那些端点  ②
+        include: '*'
+

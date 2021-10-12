@@ -1,0 +1,4 @@
+# Project exclude paths
+/ms-eureka-1001/target/
+/ms-eureka-1002/target/
+/ms-product-5001/target/
